@@ -1,6 +1,10 @@
+import { Todo } from "../class";
+import { todoList } from "../index";
+
+
 // Referencias del HTML
 const divTodoList = document.querySelector('.todo-list');
-
+const txtInput = document.querySelector('.new-todo');
 
 export const crearTodoHtml = (todo) => {
 
@@ -22,3 +26,18 @@ export const crearTodoHtml = (todo) => {
 
     return div.firstElementChild;
 }
+
+// Eventos
+txtInput.addEventListener('keyup', (evento) => { // 'keyup' permite escuchar la tecla que ha sido presionada
+    // console.log(evento);
+    if (evento.keyCode === 13 && txtInput.value.length > 0) {
+        const nuevoTodo = new Todo (txtInput.value);
+        // const todoList = new TodoList();
+        todoList.nuevoTodo(nuevoTodo);
+        // console.log(nuevoTodo);
+        console.log(todoList);
+        crearTodoHtml(nuevoTodo);
+    }
+
+});
+

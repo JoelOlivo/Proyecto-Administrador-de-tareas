@@ -3,10 +3,11 @@ import './styles.css';
 import { Todo, TodoList } from "./class";
 import { crearTodoHtml } from './js/componentes';
 
-const todoList = new TodoList();
+export const todoList = new TodoList();
 
-const tarea = new Todo('Aprender JavaScript');
+const tarea = new Todo();
 todoList.nuevoTodo( tarea );
 
 console.log(todoList);
 crearTodoHtml(tarea);
+

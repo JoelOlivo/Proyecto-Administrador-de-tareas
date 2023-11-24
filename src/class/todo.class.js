@@ -1,6 +1,6 @@
 export class Todo {
 
-    constructor (tarea) {
+    constructor (tarea = 'alguna cosa') {
 
         this.tarea = tarea;
 
