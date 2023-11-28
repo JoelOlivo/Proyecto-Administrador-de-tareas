@@ -12,6 +12,8 @@ export class TodoList {
 
     eliminarTodo (id) {
 
+        this.todos = this.todos.filter((todo) => todo.id != id);  // 'filter' regresa un nuevo arreglo dependiendo la condición
+
     }
 
     marcarCompletado (id) {
@@ -29,6 +31,14 @@ export class TodoList {
     }
 
     eliminarCompletados () {
+
+        this.todos = this.todos.filter((todo) => todo.completado === false); 
         
     }
+
+    guardarLocalStorage () {
+
+    }
+
+    cargarLocal
 }

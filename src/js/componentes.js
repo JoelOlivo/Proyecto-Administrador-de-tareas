@@ -5,6 +5,7 @@ import { todoList } from "../index";
 // Referencias del HTML
 const divTodoList = document.querySelector('.todo-list');
 const txtInput = document.querySelector('.new-todo');
+const btnCompletados = document.querySelector('.clear-completed');
 
 export const crearTodoHtml = (todo) => {
 
@@ -51,15 +52,43 @@ divTodoList.addEventListener('click', (evento)=>{
 
     console.log(todoElemento);
     console.log(idElemento);
+    console.log(nombreElemento);
+
 
     if (nombreElemento.includes('input')) {
         
         todoList.marcarCompletado(idElemento);
         // console.warn(todoElemento.classList);
         todoElemento.classList.toggle('completed');
+        // console.log(todoList);
+
+    } else if (nombreElemento.includes('button')) {
+
+        todoList.eliminarTodo(idElemento);
+        divTodoList.removeChild(todoElemento);  // 'removeChild' permite eliminar un elemento hijo html
+        console.log(todoList);
+    
     }
 
-    console.log(todoList);
     
+});
+
+btnCompletados.addEventListener('click', (evento)=>{
+
+    todoList.eliminarCompletados();
+
+    // console.log(divTodoList.children.length);
+
+    for (let i = divTodoList.children.length - 1; i >= 0; i--) {
+        const elemento = divTodoList.children[i];
+
+        if (elemento.classList.contains('completed')) { // 'contains' permite verficar la existencia de una clase
+            
+            divTodoList.removeChild(elemento);
+        }
+        console.log(elemento);
+        
+    }
+    console.log(todoList);
 });
 
