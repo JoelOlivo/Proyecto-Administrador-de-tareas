@@ -37,7 +37,29 @@ txtInput.addEventListener('keyup', (evento) => { // 'keyup' permite escuchar la 
         // console.log(nuevoTodo);
         console.log(todoList);
         crearTodoHtml(nuevoTodo);
+        txtInput.value = '';
     }
 
+});
+
+divTodoList.addEventListener('click', (evento)=>{
+
+    // console.log('click');
+    const nombreElemento = evento.target.localName;  // 'target' permite conocer que elemento es clickeado y 'localName' indica el nombre del elemento
+    const todoElemento = evento.target.parentElement.parentElement; // 'parentElement' permite conocer que seccion es clickeada
+    const idElemento = todoElemento.getAttribute('data-id'); // 'getAttribute' permite recuperar un atributo de html
+
+    console.log(todoElemento);
+    console.log(idElemento);
+
+    if (nombreElemento.includes('input')) {
+        
+        todoList.marcarCompletado(idElemento);
+        // console.warn(todoElemento.classList);
+        todoElemento.classList.toggle('completed');
+    }
+
+    console.log(todoList);
+    
 });
 
