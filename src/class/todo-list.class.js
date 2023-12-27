@@ -1,3 +1,5 @@
+import { Todo } from "./todo.class";
+
 export class TodoList {
 
     constructor () {
@@ -15,6 +17,7 @@ export class TodoList {
     eliminarTodo (id) {
 
         this.todos = this.todos.filter((todo) => todo.id != id);  // 'filter' regresa un nuevo arreglo dependiendo la condición
+        this.guardarLocalStorage();
 
     }
 
@@ -58,5 +61,8 @@ export class TodoList {
             this.todos = [];
             
         }
+
+        this.todos = this.todos.map(obj => Todo.fromJson(obj));
+        // console.warn(this.todos);
     }
 }

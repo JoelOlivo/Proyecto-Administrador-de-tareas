@@ -21,4 +21,6 @@ todoList.todos.forEach(todo => crearTodoHtml(todo));
 // }, 1500);
 
 
+// todoList.todos[2].imprimirClase();
+
 
